@@ -22,6 +22,13 @@ class Devise::PasswordExpiredController < DeviseController
 
   private
 
+  # The method was introduced to devise in version 4.2.0 but devise_security_extension is
+  def bypass_sign_in(resource, scope: nil)
+    scope ||= Devise::Mapping.find_scope!(resource)
+    expire_data_after_sign_in!
+    warden.session_serializer.store(resource, scope)
+  end
+
   def skip_password_change
     return if !resource.nil? && resource.need_change_password?
     redirect_to :root
