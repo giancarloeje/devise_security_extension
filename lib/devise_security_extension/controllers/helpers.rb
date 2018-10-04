@@ -62,7 +62,7 @@ module DeviseSecurityExtension
 
         # redirect for password update with alert message
         def redirect_for_password_change(scope)
-          redirect_to main_app.change_password_required_path_for(scope), :alert => I18n.t('change_required', {:scope => 'devise.password_expired'})
+          redirect_to change_password_required_path_for(scope), :alert => I18n.t('change_required', {:scope => 'devise.password_expired'})
         end
 
         def redirect_for_paranoid_verification(scope)
