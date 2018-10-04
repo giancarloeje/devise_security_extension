@@ -22,7 +22,7 @@ class Devise::PasswordExpiredController < DeviseController
 
   private
 
-  # The method was introduced to devise in version 4.2.0 but devise_security_extension is
+  # The method was introduced to devise in version 4.2.0 but we are integrating devise_security_extension with 3.5
   def bypass_sign_in(resource, scope: nil)
     scope ||= Devise::Mapping.find_scope!(resource)
     expire_data_after_sign_in!
